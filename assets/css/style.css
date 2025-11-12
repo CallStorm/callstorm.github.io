@@ -329,54 +329,107 @@ section {
   display: none;
 }
 
-.project-grid {
+.project-list {
   display: grid;
-  gap: 2rem;
+  gap: 1.75rem;
+  list-style: none;
+  padding: 0;
 }
 
-.project-card {
+.project-item {
+  background: var(--card-bg);
   border: 1px solid var(--card-border);
   border-radius: var(--radius-lg);
-  padding: 2rem;
-  background: rgba(5, 10, 24, 0.85);
+  padding: 2.25rem;
   box-shadow: var(--shadow);
+  display: grid;
+  gap: 1.2rem;
   transition: transform var(--transition), border var(--transition);
 }
 
-.project-card:hover {
+.project-item:hover {
   transform: translateY(-6px);
   border-color: rgba(124, 77, 255, 0.5);
 }
 
-.project-card header {
+.project-item header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   gap: 1rem;
 }
 
-.project-badge {
-  padding: 0.3rem 0.9rem;
+.project-item h3 {
+  font-size: 1.35rem;
+}
+
+.project-status {
+  padding: 0.35rem 1rem;
   border-radius: 999px;
-  background: rgba(78, 243, 255, 0.2);
+  background: rgba(78, 243, 255, 0.18);
   color: var(--accent);
   font-size: 0.85rem;
   letter-spacing: 0.08em;
 }
 
-.project-tags {
+.project-description {
+  color: var(--text-muted);
+}
+
+.project-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.project-tech {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.project-tech strong {
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+
+.tech-stack {
+  list-style: none;
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem;
-  margin-top: 1.25rem;
+  padding: 0;
+  margin: 0;
 }
 
-.project-tags span {
+.tech-stack li {
   padding: 0.4rem 0.75rem;
   border-radius: 999px;
   background: rgba(124, 77, 255, 0.18);
   font-size: 0.85rem;
   letter-spacing: 0.05em;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(78, 243, 255, 0.4);
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: border var(--transition), color var(--transition);
+}
+
+.project-link:hover,
+.project-link:focus {
+  border-color: rgba(124, 77, 255, 0.65);
+  color: var(--accent-strong);
 }
 
 footer {
@@ -412,6 +465,16 @@ a {
   }
 
   .button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .project-details {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .project-link {
     width: 100%;
     justify-content: center;
   }

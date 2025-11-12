@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Callstorm AI Studio</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <div class="wrapper">
+    <nav>
+      <div class="brand">Callstorm AI</div>
+      <ul>
+        <li><a href="/" aria-current="page">首页</a></li>
+        <li><a href="/about.html">关于</a></li>
+        <li><a href="/resume.html">简历</a></li>
+        <li><a href="/projects.html">项目</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <h1>探索<span>人工智能</span>的无限边界</h1>
+          <p>
+            在这里记录你的AI学习笔记、研究成果、产品构想与灵感火花。
+            将你的知识图谱可视化，让更多人看见你与未来科技的连接。
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="/projects.html">查看项目</a>
+            <a class="button secondary" href="/about.html">认识我</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="data-orbit">
+            <div class="core-sphere"></div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="section-title">导航速览</h2>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>关于 About</h3>
+            <p>为你的背景、价值观与AI使命感留白。使用我们提供的模块化结构快速填充内容。</p>
+          </article>
+          <article class="feature-card">
+            <h3>简历 Resume</h3>
+            <p>用数据化的方式呈现你的技能矩阵、经历轨迹与亮点成果，让AI职业画像更立体。</p>
+          </article>
+          <article class="feature-card">
+            <h3>项目 Projects</h3>
+            <p>展示项目路线图、版本更新与可复现指南，助力读者快速理解你的AI创造力。</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="year"></span> Callstorm AI Studio. Crafted for the age of intelligence.
+    </footer>
+  </div>
+
+  <script>
+    const yearEl = document.getElementById('year');
+    if (yearEl) {
+      yearEl.textContent = new Date().getFullYear();
+    }
+  </script>
+</body>
+</html>

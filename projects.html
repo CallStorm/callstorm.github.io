@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>项目 | Callstorm AI Studio</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <div class="wrapper">
+    <nav>
+      <div class="brand">Callstorm AI</div>
+      <ul>
+        <li><a href="/">首页</a></li>
+        <li><a href="/about.html">关于</a></li>
+        <li><a href="/resume.html">简历</a></li>
+        <li><a href="/projects.html" aria-current="page">项目</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <section>
+        <h1 class="section-title">项目宇宙</h1>
+        <article class="content-card">
+          <header>
+            <h2>项目介绍说明</h2>
+            <p class="meta">建议解释你的项目类型｜所在阶段｜合作方式</p>
+          </header>
+          <p>
+            使用此段落描述你整体的项目体系：例如研究项目、产品原型、开源组件、技术博客系列等。
+            可以说明更新频率、如何参与、以及你对AI应用的追求方向。
+          </p>
+        </article>
+      </section>
+
+      <section>
+        <h2 class="section-title">进行中的项目</h2>
+        <div class="project-grid">
+          <article class="project-card">
+            <header>
+              <div>
+                <h3>DeepSLO</h3>
+                <p class="meta">项目状态｜核心技术｜目标用户</p>
+              </div>
+              <span class="project-badge">Active</span>
+            </header>
+            <p>
+              在此总结 DeepSLO 项目的愿景。说明它解决的问题、使用的核心算法或模型、以及为用户或业务带来的价值。
+            </p>
+            <div class="project-tags">
+              <span>标签示例：LLM</span>
+              <span>标签示例：多模态</span>
+              <span>标签示例：推理优化</span>
+            </div>
+            <section>
+              <h4 class="meta">里程碑</h4>
+              <div class="timeline">
+                <div class="timeline-item">
+                  <strong>版本 v0.1｜时间</strong>
+                  <p>描述一个关键功能、实验结果或阶段性成果。</p>
+                </div>
+                <div class="timeline-item">
+                  <strong>版本 v0.2｜时间</strong>
+                  <p>继续填写项目推进情况，例如性能提升、数据集扩展、上线体验。</p>
+                </div>
+              </div>
+            </section>
+            <section>
+              <h4 class="meta">下一步计划</h4>
+              <ul>
+                <li>计划 01：填写即将开展的任务或研究方向。</li>
+                <li>计划 02：描述你需要的合作资源或对外期待。</li>
+              </ul>
+            </section>
+            <section>
+              <h4 class="meta">资源链接</h4>
+              <p>
+                <a href="#">GitHub / Demo / 论文链接</a>
+              </p>
+            </section>
+          </article>
+
+          <article class="project-card">
+            <header>
+              <div>
+                <h3>项目名称</h3>
+                <p class="meta">填写项目定位、核心技术关键词</p>
+              </div>
+              <span class="project-badge">Planned</span>
+            </header>
+            <p>
+              添加项目简介：目标问题、解决方案、你的角色与贡献。
+            </p>
+            <div class="project-tags">
+              <span>关键字 1</span>
+              <span>关键字 2</span>
+              <span>关键字 3</span>
+            </div>
+            <section>
+              <h4 class="meta">里程碑</h4>
+              <div class="timeline">
+                <div class="timeline-item">
+                  <strong>里程碑｜时间</strong>
+                  <p>描述计划中的阶段目标或预期成果。</p>
+                </div>
+              </div>
+            </section>
+            <section>
+              <h4 class="meta">下一步计划</h4>
+              <ul>
+                <li>下一步 01</li>
+                <li>下一步 02</li>
+              </ul>
+            </section>
+            <section>
+              <h4 class="meta">资源链接</h4>
+              <p>
+                <a href="#">资源链接</a>
+              </p>
+            </section>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="section-title">项目归档</h2>
+        <article class="content-card">
+          <header>
+            <h3>历史项目 / 已完成阶段</h3>
+            <p class="meta">可按年份或主题整理</p>
+          </header>
+          <div class="timeline">
+            <div class="timeline-item">
+              <strong>项目名称｜完成时间</strong>
+              <p>总结项目成果、应用场景与复盘学习。</p>
+            </div>
+            <div class="timeline-item">
+              <strong>项目名称｜完成时间</strong>
+              <p>继续添加其他值得记录的项目。</p>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="year"></span> Callstorm AI Studio. Crafted for the age of intelligence.
+    </footer>
+  </div>
+
+  <script>
+    const yearEl = document.getElementById('year');
+    if (yearEl) {
+      yearEl.textContent = new Date().getFullYear();
+    }
+  </script>
+</body>
+</html>
+

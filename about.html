@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>关于我 | Callstorm AI Studio</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <div class="wrapper">
+    <nav>
+      <div class="brand">Callstorm AI</div>
+      <ul>
+        <li><a href="/">首页</a></li>
+        <li><a href="/about.html" aria-current="page">关于</a></li>
+        <li><a href="/resume.html">简历</a></li>
+        <li><a href="/projects.html">项目</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <section>
+        <h1 class="section-title">关于我</h1>
+        <article class="content-card">
+          <header>
+            <h2>核心自我介绍</h2>
+            <p class="meta">填写你的头衔｜所在地｜关键词标签</p>
+          </header>
+          <p>
+            用 2-3 段话介绍你是谁、正在专注什么方向、为什么热爱人工智能。
+            可以包含你对AI世界的理解、正在解决的问题、以及希望创造的未来。
+          </p>
+        </article>
+      </section>
+
+      <section>
+        <h2 class="section-title">使命与价值观</h2>
+        <article class="content-card">
+          <header>
+            <h3>我的使命</h3>
+            <p class="meta">建议列出 3 个重点</p>
+          </header>
+          <ul class="timeline">
+            <li class="timeline-item">使命宣言 01：描述你想在AI领域达成的影响力或愿景。</li>
+            <li class="timeline-item">使命宣言 02：从用户/社会/技术角度补充你的动机。</li>
+            <li class="timeline-item">使命宣言 03：说明你目前正在行动的路径。</li>
+          </ul>
+        </article>
+      </section>
+
+      <section>
+        <h2 class="section-title">里程碑时间线</h2>
+        <article class="content-card">
+          <header>
+            <h3>成长瞬间</h3>
+            <p class="meta">建议按时间倒序填写 4-6 条</p>
+          </header>
+          <div class="timeline">
+            <div class="timeline-item">
+              <strong>年份 / 阶段</strong> ｜ 描述你在该阶段取得的重要突破、研究成果或经历。
+            </div>
+            <div class="timeline-item">
+              <strong>年份 / 阶段</strong> ｜ 可以写关键节点，如比赛获奖、论文发表、产品上线等。
+            </div>
+            <div class="timeline-item">
+              <strong>年份 / 阶段</strong> ｜ 继续补充你的成长轨迹。
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="year"></span> Callstorm AI Studio. Crafted for the age of intelligence.
+    </footer>
+  </div>
+
+  <script>
+    const yearEl = document.getElementById('year');
+    if (yearEl) {
+      yearEl.textContent = new Date().getFullYear();
+    }
+  </script>
+</body>
+</html>
+

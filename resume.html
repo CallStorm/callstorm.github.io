@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>简历 | Callstorm AI Studio</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <div class="wrapper">
+    <nav>
+      <div class="brand">Callstorm AI</div>
+      <ul>
+        <li><a href="/">首页</a></li>
+        <li><a href="/about.html">关于</a></li>
+        <li><a href="/resume.html" aria-current="page">简历</a></li>
+        <li><a href="/projects.html">项目</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <section>
+        <h1 class="section-title">简历速览</h1>
+        <article class="content-card">
+          <header>
+            <h2>个人摘要</h2>
+            <p class="meta">3-4 句高度概括你的背景、能力与影响力</p>
+          </header>
+          <p>
+            在这里填写你的专业背景、核心技能与独特优势。突出你在AI领域的定位，说明你目前的角色或期待合作的方向。
+          </p>
+        </article>
+      </section>
+
+      <section>
+        <h2 class="section-title">技能矩阵</h2>
+        <article class="content-card">
+          <header>
+            <h3>技术｜工具｜方法论</h3>
+            <p class="meta">建议按类别或场景划分</p>
+          </header>
+          <div>
+            <p><strong>AI / ML：</strong> 列出模型、框架（如 PyTorch、TensorFlow、LLM 微调等）。</p>
+            <p><strong>工程能力：</strong> 数据工程、MLOps、部署、云服务等。</p>
+            <p><strong>产品 / 业务：</strong> AI 产品设计、用户研究、行业结合案例。</p>
+            <p><strong>软技能：</strong> 沟通协作、团队带领、技术布道等。</p>
+          </div>
+        </article>
+      </section>
+
+      <section>
+        <h2 class="section-title">经历 Experience</h2>
+        <article class="content-card">
+          <header>
+            <h3>工作与实践</h3>
+            <p class="meta">推荐列出近 3-5 段经历</p>
+          </header>
+          <div class="timeline">
+            <div class="timeline-item">
+              <strong>公司 / 组织｜职位｜起止时间</strong>
+              <p>描述你的职责范围、带来的业务或技术成果，以及可量化的指标（如提升率、节省成本等）。</p>
+            </div>
+            <div class="timeline-item">
+              <strong>公司 / 组织｜职位｜起止时间</strong>
+              <p>补充另一段经历，突出你在AI项目中的贡献或领导力。</p>
+            </div>
+            <div class="timeline-item">
+              <strong>公司 / 组织｜职位｜起止时间</strong>
+              <p>继续填写，确保每段经历都强调价值与影响。</p>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section>
+        <h2 class="section-title">教育 Education</h2>
+        <article class="content-card">
+          <header>
+            <h3>学历｜科研｜认证</h3>
+            <p class="meta">填写 2-3 条重要教育节点</p>
+          </header>
+          <div class="timeline">
+            <div class="timeline-item">
+              <strong>学校｜专业｜起止时间</strong>
+              <p>描述你的研究方向、重要课程或获得的奖项。</p>
+            </div>
+            <div class="timeline-item">
+              <strong>学校｜专业｜起止时间</strong>
+              <p>可以写另一段教育经历或在线认证。</p>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="year"></span> Callstorm AI Studio. Crafted for the age of intelligence.
+    </footer>
+  </div>
+
+  <script>
+    const yearEl = document.getElementById('year');
+    if (yearEl) {
+      yearEl.textContent = new Date().getFullYear();
+    }
+  </script>
+</body>
+</html>
+

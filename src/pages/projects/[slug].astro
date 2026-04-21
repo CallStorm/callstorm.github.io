@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
@@ -8,6 +8,7 @@ export async function getStaticPaths() {
 }
 
 const { project } = Astro.props;
+const { Content } = await render(project);
 ---
 
 <BaseLayout title={`${project.data.title} | 作品集`} description={project.data.summary}>
@@ -22,7 +23,6 @@ const { project } = Astro.props;
     </div>
   </section>
   <article class="markdown">
-    <h2>项目说明</h2>
-    <p>{project.data.summary}</p>
+    <Content />
   </article>
 </BaseLayout>

@@ -6,23 +6,52 @@ interface Props {
   description: string;
   href: string;
   meta?: string;
-  icon?: "ai" | "robot" | "book" | "video";
+  tags?: string[];
+  cover?: string;
+  icon?: "ai" | "robot" | "book" | "video" | "github";
+  ctaLabel?: string;
+  external?: boolean;
 }
 
-const { title, description, href, meta, icon } = Astro.props;
+const { title, description, href, meta, tags = [], cover, icon, ctaLabel, external = false } = Astro.props;
+const isProjectCard = tags.length > 0;
+const resolvedIcon = icon ?? (isProjectCard ? "github" : undefined);
+const actionLabel = ctaLabel ?? (isProjectCard ? "View on GitHub" : "View");
 ---
 
-<a class="card" href={href}>
-  <div class="card-top">
-    <div class="card-top-left">
-      {meta && <p class="card-meta">{meta}</p>}
+<a class:list={["card", isProjectCard && "card--project"]} href={href} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined}>
+  {isProjectCard && cover && (
+    <div class="card-cover" aria-hidden="true">
+      <img src={cover} alt="" loading="lazy" />
     </div>
-    {icon && (
+  )}
+  <div class="card-top">
+    {meta && !isProjectCard && (
+      <div class="card-top-left">
+        <p class="card-meta">{meta}</p>
+      </div>
+    )}
+    {resolvedIcon && (
       <div class="card-icon" aria-hidden="true">
-        <Icon name={icon} />
+        <Icon name={resolvedIcon} />
       </div>
     )}
   </div>
   <h3>{title}</h3>
   <p>{description}</p>
+  {isProjectCard && (
+    <div class="card-tags">
+      {tags.map((tag) => (
+        <span class="card-tag">{tag}</span>
+      ))}
+    </div>
+  )}
+  {isProjectCard && (
+    <div class="card-cta">
+      <span>{actionLabel}</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 12h14m-5-5 5 5-5 5" />
+      </svg>
+    </div>
+  )}
 </a>

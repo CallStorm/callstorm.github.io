@@ -12,7 +12,6 @@ const projects = (await getCollection("projects")).sort(
   <section class="page-header">
     <p class="eyebrow">Projects</p>
     <h1>作品集</h1>
-    <p class="lead">从想法到落地的技术项目。</p>
   </section>
 
   <section class="grid">
@@ -20,8 +19,12 @@ const projects = (await getCollection("projects")).sort(
       <Card
         title={project.data.title}
         description={project.data.summary}
-        href={`/projects/${project.id}`}
-        meta={project.data.tech.join(" / ")}
+        href={project.data.repo ?? `/projects/${project.id}`}
+        tags={project.data.tech}
+        cover={project.data.cover}
+        icon="github"
+        ctaLabel={project.data.repo ? "View on GitHub" : "View Project"}
+        external={Boolean(project.data.repo)}
       />
     ))}
   </section>

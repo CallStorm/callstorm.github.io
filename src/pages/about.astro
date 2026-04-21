@@ -1,8 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 
 const [profile] = await getCollection("profile");
+const { Content } = await render(profile);
 ---
 
 <BaseLayout title="个人简介 | CallStorm" description="个人背景与技能标签。">
@@ -12,9 +13,193 @@ const [profile] = await getCollection("profile");
     <p class="lead">{profile.data.title}</p>
   </section>
 
-  <article class="markdown">
-    <p>{profile.data.bio}</p>
-    <p>位置：{profile.data.location ?? "Remote"}</p>
-    <p>联系：<a href={`mailto:${profile.data.email}`}>{profile.data.email}</a></p>
-  </article>
+  <section class="about-layout">
+    <aside class="about-aside">
+      <div class="about-card">
+        <h2>个人信息</h2>
+        <p>{profile.data.bio}</p>
+        <ul class="meta-list">
+          <li><span>地点</span><strong>{profile.data.location ?? "Remote"}</strong></li>
+          <li><span>邮箱</span><a href={`mailto:${profile.data.email}`}>{profile.data.email}</a></li>
+          <li><span>GitHub</span><a href={profile.data.github} target="_blank" rel="noreferrer">CallStorm</a></li>
+        </ul>
+      </div>
+
+      <div class="about-card">
+        <h2>职业概览</h2>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <strong>13+</strong>
+            <span>年工程经验</span>
+          </div>
+          <div class="stat-item">
+            <strong>2W+</strong>
+            <span>机器运维规模</span>
+          </div>
+          <div class="stat-item">
+            <strong>90%</strong>
+            <span>人工操作降幅</span>
+          </div>
+          <div class="stat-item">
+            <strong>99.99%</strong>
+            <span>SLO 目标保障</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-card">
+        <h2>关键词</h2>
+        <div class="tag-list">
+          <span>DevOps</span>
+          <span>SRE</span>
+          <span>SLO</span>
+          <span>可观测性</span>
+          <span>AI Agent</span>
+          <span>CI/CD</span>
+        </div>
+      </div>
+    </aside>
+
+    <article class="markdown about-content">
+      <Content />
+    </article>
+  </section>
 </BaseLayout>
+
+<style>
+  .about-layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .about-aside {
+    display: grid;
+    gap: 1rem;
+    position: sticky;
+    top: 1rem;
+  }
+
+  .about-card {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1rem;
+    background: linear-gradient(160deg, rgba(20, 31, 51, 0.92) 0%, rgba(12, 20, 35, 0.92) 100%);
+  }
+
+  .about-card h2 {
+    margin: 0 0 0.75rem;
+    font-size: 1rem;
+  }
+
+  .about-card p {
+    margin: 0;
+    color: var(--text-dim);
+  }
+
+  .meta-list {
+    margin: 0.9rem 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.55rem;
+  }
+
+  .meta-list li {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.6rem;
+    font-size: 0.92rem;
+  }
+
+  .meta-list span {
+    color: var(--text-dim);
+  }
+
+  .meta-list strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.65rem;
+  }
+
+  .stat-item {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 0.6rem;
+    background: rgba(13, 22, 38, 0.7);
+  }
+
+  .stat-item strong {
+    display: block;
+    color: var(--accent);
+    font-size: 1.08rem;
+    line-height: 1.1;
+  }
+
+  .stat-item span {
+    color: var(--text-dim);
+    font-size: 0.82rem;
+  }
+
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+
+  .tag-list span {
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.2rem 0.58rem;
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    background: rgba(45, 212, 247, 0.06);
+  }
+
+  .about-content {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: rgba(14, 22, 38, 0.7);
+    padding: 1.1rem 1.2rem 1.3rem;
+    border-top-color: var(--line);
+  }
+
+  .about-content :global(h2) {
+    margin-top: 1.4rem;
+    margin-bottom: 0.7rem;
+    font-size: 1.2rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .about-content :global(h3) {
+    margin-top: 1rem;
+    margin-bottom: 0.4rem;
+    color: #d7e2fa;
+    font-size: 1rem;
+  }
+
+  .about-content :global(ul) {
+    margin: 0.45rem 0 0.8rem;
+  }
+
+  .about-content :global(li) {
+    margin-bottom: 0.28rem;
+  }
+
+  @media (max-width: 900px) {
+    .about-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .about-aside {
+      position: static;
+    }
+  }
+</style>

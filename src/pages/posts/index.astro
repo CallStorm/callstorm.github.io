@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Card from "../../components/Card.astro";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("posts")).sort(
+  (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime()
+);
+---
+
+<BaseLayout title="文章 | CallStorm" description="技术与实践文章。">
+  <section class="page-header">
+    <p class="eyebrow">Posts</p>
+    <h1>文章</h1>
+    <p class="lead">持续输出的技术笔记与经验总结。</p>
+  </section>
+
+  <section class="grid">
+    {posts.map((post) => (
+      <Card
+        title={post.data.title}
+        description={post.data.excerpt}
+        href={`/posts/${post.id}`}
+        meta={post.data.publishedAt.toISOString().split("T")[0]}
+      />
+    ))}
+  </section>
+</BaseLayout>

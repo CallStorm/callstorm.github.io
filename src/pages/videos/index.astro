@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Card from "../../components/Card.astro";
+import { getCollection } from "astro:content";
+
+const videos = (await getCollection("videos")).sort(
+  (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime()
+);
+---
+
+<BaseLayout title="视频 | CallStorm" description="视频作品与公开分享。">
+  <section class="page-header">
+    <p class="eyebrow">Videos</p>
+    <h1>视频</h1>
+    <p class="lead">课程、分享与技术视频合集。</p>
+  </section>
+
+  <section class="grid">
+    {videos.map((video) => (
+      <Card
+        title={video.data.title}
+        description={video.data.summary}
+        href={`/videos/${video.id}`}
+        meta={video.data.platform}
+      />
+    ))}
+  </section>
+</BaseLayout>

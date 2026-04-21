@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Card from "../../components/Card.astro";
+import { getCollection } from "astro:content";
+
+const projects = (await getCollection("projects")).sort(
+  (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime()
+);
+---
+
+<BaseLayout title="作品集 | CallStorm" description="项目、技术栈和成果展示。">
+  <section class="page-header">
+    <p class="eyebrow">Projects</p>
+    <h1>作品集</h1>
+    <p class="lead">从想法到落地的技术项目。</p>
+  </section>
+
+  <section class="grid">
+    {projects.map((project) => (
+      <Card
+        title={project.data.title}
+        description={project.data.summary}
+        href={`/projects/${project.id}`}
+        meta={project.data.tech.join(" / ")}
+      />
+    ))}
+  </section>
+</BaseLayout>

@@ -1,0 +1,28 @@
+---
+import Icon from "./Icon.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+  meta?: string;
+  icon?: "ai" | "robot" | "book" | "video";
+}
+
+const { title, description, href, meta, icon } = Astro.props;
+---
+
+<a class="card" href={href}>
+  <div class="card-top">
+    <div class="card-top-left">
+      {meta && <p class="card-meta">{meta}</p>}
+    </div>
+    {icon && (
+      <div class="card-icon" aria-hidden="true">
+        <Icon name={icon} />
+      </div>
+    )}
+  </div>
+  <h3>{title}</h3>
+  <p>{description}</p>
+</a>

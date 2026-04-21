@@ -1,0 +1,36 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Card from "../components/Card.astro";
+import { getCollection } from "astro:content";
+
+const [profile] = await getCollection("profile");
+---
+
+<BaseLayout title="CallStorm | Personal Hub" description="简介、作品、文章和视频的一站式个人网站。">
+  <section class="hero hero-grid">
+    <div class="hero-left">
+      <p class="eyebrow">Personal Brand</p>
+      <h1>{profile.data.name}</h1>
+      <p class="lead">{profile.data.title}</p>
+      <p>{profile.data.bio}</p>
+      <div class="quick-links">
+        <a href={profile.data.github} target="_blank" rel="noreferrer">GitHub</a>
+        <a href={`mailto:${profile.data.email}`}>Email</a>
+        {profile.data.social.map((item) => (
+          <a href={item.url} target="_blank" rel="noreferrer">{item.name}</a>
+        ))}
+      </div>
+    </div>
+
+    <div class="hero-right" aria-hidden="true">
+      <img class="avatar" src="/avatar.jpg" alt="" loading="eager" />
+    </div>
+  </section>
+
+  <section class="grid">
+    <Card title="个人简介" description="了解我的背景、技术偏好和方向。" href="/about" icon="robot" />
+    <Card title="作品集" description="查看做过的项目、技术选型与链接。" href="/projects" icon="ai" />
+    <Card title="文章" description="围绕技术、产品和实践的思考沉淀。" href="/posts" icon="book" />
+    <Card title="视频" description="演讲、教程和创作视频的汇总。" href="/videos" icon="video" />
+  </section>
+</BaseLayout>

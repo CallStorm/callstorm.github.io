@@ -1,0 +1,20 @@
+---
+const navItems = [
+  { href: "/", label: "首页" },
+  { href: "/about", label: "简介" },
+  { href: "/projects", label: "作品集" },
+  { href: "/posts", label: "文章" },
+  { href: "/videos", label: "视频" }
+];
+---
+
+<header class="navbar">
+  <a class="brand" href="/">CallStorm</a>
+  <nav>
+    <ul>
+      {navItems.map((item) => (
+        <li><a href={item.href}>{item.label}</a></li>
+      ))}
+    </ul>
+  </nav>
+</header>

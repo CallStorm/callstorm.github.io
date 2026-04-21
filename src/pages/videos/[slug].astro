@@ -1,0 +1,27 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const videos = await getCollection("videos");
+  return videos.map((video) => ({ params: { slug: video.id }, props: { video } }));
+}
+
+const { video } = Astro.props;
+---
+
+<BaseLayout title={`${video.data.title} | 视频`} description={video.data.summary}>
+  <section class="page-header">
+    <p class="eyebrow">Video</p>
+    <h1>{video.data.title}</h1>
+    <p class="lead">{video.data.summary}</p>
+    <div class="quick-links">
+      <a href={video.data.videoUrl} target="_blank" rel="noreferrer">观看视频</a>
+    </div>
+  </section>
+  <article class="markdown">
+    <h2>视频简介</h2>
+    <p>{video.data.summary}</p>
+    <p>平台：{video.data.platform}</p>
+  </article>
+</BaseLayout>

@@ -1,0 +1,20 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const [profile] = await getCollection("profile");
+---
+
+<BaseLayout title="个人简介 | CallStorm" description="个人背景与技能标签。">
+  <section class="page-header">
+    <p class="eyebrow">About</p>
+    <h1>{profile.data.name}</h1>
+    <p class="lead">{profile.data.title}</p>
+  </section>
+
+  <article class="markdown">
+    <p>{profile.data.bio}</p>
+    <p>位置：{profile.data.location ?? "Remote"}</p>
+    <p>联系：<a href={`mailto:${profile.data.email}`}>{profile.data.email}</a></p>
+  </article>
+</BaseLayout>

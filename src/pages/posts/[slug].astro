@@ -1,0 +1,25 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+---
+
+<BaseLayout title={`${post.data.title} | 文章`} description={post.data.excerpt}>
+  <section class="page-header">
+    <p class="eyebrow">Post</p>
+    <h1>{post.data.title}</h1>
+    <p class="lead">{post.data.excerpt}</p>
+    <p>{post.data.publishedAt.toISOString().split("T")[0]}</p>
+  </section>
+  <article class="markdown">
+    <h2>摘要</h2>
+    <p>{post.data.excerpt}</p>
+    <p>标签：{post.data.tags.join(" / ")}</p>
+  </article>
+</BaseLayout>

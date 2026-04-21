@@ -70,22 +70,26 @@ const { Content } = await render(profile);
   .about-layout {
     display: grid;
     grid-template-columns: 300px 1fr;
-    gap: 1rem;
+    gap: 24px;
     align-items: start;
   }
 
   .about-aside {
     display: grid;
-    gap: 1rem;
+    gap: 24px;
     position: sticky;
     top: 1rem;
   }
 
   .about-card {
-    border: 1px solid var(--line);
+    border: 1px solid transparent;
     border-radius: var(--radius);
-    padding: 1rem;
-    background: linear-gradient(160deg, rgba(20, 31, 51, 0.92) 0%, rgba(12, 20, 35, 0.92) 100%);
+    padding: 1.15rem 1.15rem 1.05rem;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.86)) padding-box,
+      linear-gradient(140deg, rgba(15, 23, 42, 0.10), transparent 55%) border-box;
+    backdrop-filter: blur(12px);
+    box-shadow: var(--shadow-soft);
   }
 
   .about-card h2 {
@@ -129,10 +133,10 @@ const { Content } = await render(profile);
   }
 
   .stat-item {
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    padding: 0.6rem;
-    background: rgba(13, 22, 38, 0.7);
+    border: 1px solid rgba(15, 23, 42, 0.10);
+    border-radius: calc(var(--radius) - 10px);
+    padding: 0.7rem 0.75rem;
+    background: rgba(255, 255, 255, 0.70);
   }
 
   .stat-item strong {
@@ -154,20 +158,23 @@ const { Content } = await render(profile);
   }
 
   .tag-list span {
-    border: 1px solid var(--line);
+    border: 1px solid rgba(15, 23, 42, 0.10);
     border-radius: 999px;
-    padding: 0.2rem 0.58rem;
+    padding: 0.25rem 0.62rem;
     font-size: 0.82rem;
     color: var(--text-dim);
-    background: rgba(45, 212, 247, 0.06);
+    background: rgba(26, 115, 232, 0.08);
   }
 
   .about-content {
-    border: 1px solid var(--line);
+    border: 1px solid transparent;
     border-radius: var(--radius);
-    background: rgba(14, 22, 38, 0.7);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.86)) padding-box,
+      linear-gradient(140deg, rgba(15, 23, 42, 0.10), transparent 55%) border-box;
     padding: 1.1rem 1.2rem 1.3rem;
-    border-top-color: var(--line);
+    backdrop-filter: blur(12px);
+    box-shadow: var(--shadow-soft);
   }
 
   .about-content :global(h2) {
@@ -175,13 +182,13 @@ const { Content } = await render(profile);
     margin-bottom: 0.7rem;
     font-size: 1.2rem;
     padding-bottom: 0.35rem;
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.10);
   }
 
   .about-content :global(h3) {
     margin-top: 1rem;
     margin-bottom: 0.4rem;
-    color: #d7e2fa;
+    color: var(--text);
     font-size: 1rem;
   }
 

@@ -1,12 +1,17 @@
 :root {
-  --bg: #0b1220;
-  --bg-elev: #141f33;
-  --text: #e8ecf8;
-  --text-dim: #b5c1d8;
-  --line: #2a3a56;
-  --accent: #2dd4f7;
-  --accent-soft: #1b4d6d;
-  --radius: 14px;
+  --bg: #f3f6fb;
+  --bg-tint: #eef3fb;
+  --surface: rgba(255, 255, 255, 0.92);
+  --surface-strong: #ffffff;
+  --text: #0f172a;
+  --text-dim: rgba(15, 23, 42, 0.66);
+  --line: rgba(15, 23, 42, 0.10);
+  --line-soft: rgba(15, 23, 42, 0.07);
+  --accent: #1a73e8;
+  --accent-soft: rgba(26, 115, 232, 0.18);
+  --shadow: 0 16px 40px rgba(15, 23, 42, 0.10);
+  --shadow-soft: 0 8px 24px rgba(15, 23, 42, 0.08);
+  --radius: 22px;
 }
 
 * {
@@ -16,8 +21,9 @@
 body {
   margin: 0;
   background:
-    radial-gradient(circle at top, #132548 0%, var(--bg) 58%),
-    radial-gradient(circle at 80% 20%, rgba(45, 212, 247, 0.14), transparent 40%);
+    radial-gradient(1200px 740px at 50% 0%, rgba(26, 115, 232, 0.08) 0%, transparent 54%),
+    radial-gradient(900px 560px at 82% 18%, rgba(26, 115, 232, 0.06) 0%, transparent 46%),
+    linear-gradient(180deg, var(--bg-tint) 0%, var(--bg) 55%);
   color: var(--text);
   font-family: Inter, "PingFang SC", "Microsoft YaHei", sans-serif;
   line-height: 1.65;
@@ -47,10 +53,11 @@ a:hover {
   align-items: center;
   justify-content: space-between;
   padding: 0.9rem 1.1rem;
-  border: 1px solid var(--line);
+  border: 1px solid var(--line-soft);
   border-radius: var(--radius);
-  background: rgba(16, 24, 39, 0.65);
-  backdrop-filter: blur(4px);
+  background: var(--surface);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-soft);
 }
 
 .brand {
@@ -88,17 +95,19 @@ a:hover {
   aspect-ratio: 1 / 1;
   border-radius: 999px;
   object-fit: cover;
-  border: 1px solid var(--line);
-  background: var(--bg-elev);
+  border: 1px solid var(--line-soft);
+  background: var(--surface-strong);
   box-shadow:
-    0 0 0 6px rgba(45, 212, 247, 0.08),
-    0 20px 60px rgba(0, 0, 0, 0.35);
+    0 0 0 8px rgba(26, 115, 232, 0.06),
+    var(--shadow);
 }
 
 h1 {
   margin: 0.2rem 0 0.8rem;
   font-size: clamp(2rem, 5vw, 3rem);
   line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
 .eyebrow {
@@ -111,8 +120,12 @@ h1 {
 
 .lead {
   margin: 0 0 0.6rem;
-  color: #d7e2fa;
+  color: var(--text);
   font-size: 1.15rem;
+  background: linear-gradient(90deg, rgba(15, 23, 42, 0.92) 0%, rgba(15, 23, 42, 0.52) 88%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .quick-links {
@@ -123,30 +136,46 @@ h1 {
 }
 
 .quick-links a {
-  border: 1px solid var(--line);
+  border: 1px solid var(--line-soft);
   border-radius: 999px;
-  padding: 0.35rem 0.8rem;
-  background: var(--bg-elev);
+  padding: 0.45rem 0.95rem;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+}
+
+.quick-links a:hover {
+  opacity: 1;
+  border-color: rgba(26, 115, 232, 0.28);
+  box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.10);
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
+  gap: 24px;
 }
 
 .card {
   display: block;
-  border: 1px solid var(--line);
+  border: 1px solid transparent;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.86)) padding-box,
+    linear-gradient(140deg, rgba(15, 23, 42, 0.10), transparent 55%) border-box;
   border-radius: var(--radius);
-  padding: 1rem;
-  background: linear-gradient(160deg, rgba(20, 31, 51, 0.95) 0%, rgba(12, 20, 35, 0.95) 100%);
-  transition: transform 160ms ease, border-color 160ms ease;
+  padding: 1.25rem;
+  backdrop-filter: blur(12px);
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+  box-shadow: var(--shadow-soft);
 }
 
 .card:hover {
-  transform: translateY(-2px);
-  border-color: var(--accent-soft);
+  transform: translateY(-5px);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.90)) padding-box,
+    linear-gradient(140deg, rgba(26, 115, 232, 0.35), transparent 55%) border-box;
+  box-shadow:
+    var(--shadow),
+    0 0 0 4px rgba(26, 115, 232, 0.08);
 }
 
 .card h3 {
@@ -162,13 +191,17 @@ h1 {
 }
 
 .card-icon {
-  width: 34px;
-  height: 34px;
-  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
   display: grid;
   place-items: center;
-  border: 1px solid var(--line);
-  background: rgba(45, 212, 247, 0.08);
+  border: 1px solid rgba(15, 23, 42, 0.10);
+  background:
+    radial-gradient(circle at 35% 30%, rgba(26, 115, 232, 0.18), transparent 58%),
+    rgba(26, 115, 232, 0.06);
+  box-shadow:
+    inset 0 0 0 6px rgba(15, 23, 42, 0.04);
   color: var(--accent);
 }
 
@@ -188,7 +221,7 @@ h1 {
 }
 
 .markdown {
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--line-soft);
   padding-top: 1rem;
 }
 

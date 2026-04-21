@@ -3,13 +3,12 @@ name: CallStorm
 title: Full-Stack Builder / AI-Native Maker
 bio: 13年研发与运维工程经验，聚焦DevOps、可观测性与AI工程化落地，擅长将复杂系统做成稳定、可度量、可持续迭代的生产力平台。
 location: 西安
+wechat: "13417710900"
 email: 510908220@qq.com
 github: https://github.com/CallStorm
 social:
-  - name: X
-    url: https://x.com/
-  - name: Bilibili
-    url: https://www.bilibili.com/
+  - name: GitHub
+    url: https://github.com/CallStorm
 ---
 
 13 年研发工程经验，先后在互联网、安全与云计算场景长期负责核心系统研发、运维平台建设与工程效能提升。

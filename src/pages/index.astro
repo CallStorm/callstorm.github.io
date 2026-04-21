@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Card from "../components/Card.astro";
+import SocialIcon from "../components/SocialIcon.astro";
 import { getCollection } from "astro:content";
 
 const [profile] = await getCollection("profile");
@@ -14,11 +15,18 @@ const [profile] = await getCollection("profile");
       <p class="lead">{profile.data.title}</p>
       <p>{profile.data.bio}</p>
       <div class="quick-links">
-        <a href={profile.data.github} target="_blank" rel="noreferrer">GitHub</a>
-        <a href={`mailto:${profile.data.email}`}>Email</a>
-        {profile.data.social.map((item) => (
-          <a href={item.url} target="_blank" rel="noreferrer">{item.name}</a>
-        ))}
+        <span class="quick-link-item quick-link-static">
+          <SocialIcon name="wechat" />
+          <span>{profile.data.wechat ?? "未设置微信"}</span>
+        </span>
+        <a class="quick-link-item" href={`mailto:${profile.data.email}`}>
+          <SocialIcon name="email" />
+          <span>{profile.data.email}</span>
+        </a>
+        <a class="quick-link-item" href={profile.data.github} target="_blank" rel="noreferrer">
+          <SocialIcon name="github" />
+          <span>github.com/CallStorm</span>
+        </a>
       </div>
     </div>
 

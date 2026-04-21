@@ -8,6 +8,7 @@ const profile = defineCollection({
     title: z.string(),
     bio: z.string(),
     location: z.string().optional(),
+    wechat: z.string().optional(),
     email: z.string().email(),
     github: z.string().url(),
     social: z.array(

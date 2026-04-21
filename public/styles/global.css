@@ -135,18 +135,37 @@ h1 {
   margin-top: 1rem;
 }
 
-.quick-links a {
+.quick-link-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
   border: 1px solid var(--line-soft);
   border-radius: 999px;
   padding: 0.45rem 0.95rem;
   background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(12px);
+  color: var(--text);
 }
 
-.quick-links a:hover {
+.quick-link-item:hover {
   opacity: 1;
   border-color: rgba(26, 115, 232, 0.28);
   box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.10);
+}
+
+.quick-link-static {
+  cursor: default;
+}
+
+.quick-link-static:hover {
+  border-color: var(--line-soft);
+  box-shadow: none;
+}
+
+.social-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--accent);
 }
 
 .grid {

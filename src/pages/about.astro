@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import SocialIcon from "../components/SocialIcon.astro";
 import { getCollection, render } from "astro:content";
 
 const [profile] = await getCollection("profile");
@@ -20,8 +21,18 @@ const { Content } = await render(profile);
         <p>{profile.data.bio}</p>
         <ul class="meta-list">
           <li><span>地点</span><strong>{profile.data.location ?? "Remote"}</strong></li>
-          <li><span>邮箱</span><a href={`mailto:${profile.data.email}`}>{profile.data.email}</a></li>
-          <li><span>GitHub</span><a href={profile.data.github} target="_blank" rel="noreferrer">CallStorm</a></li>
+          <li>
+            <span class="meta-label"><SocialIcon name="wechat" />微信</span>
+            <strong>{profile.data.wechat ?? "未设置"}</strong>
+          </li>
+          <li>
+            <span class="meta-label"><SocialIcon name="email" />邮箱</span>
+            <a href={`mailto:${profile.data.email}`}>{profile.data.email}</a>
+          </li>
+          <li>
+            <span class="meta-label"><SocialIcon name="github" />GitHub</span>
+            <a href={profile.data.github} target="_blank" rel="noreferrer">github.com/CallStorm</a>
+          </li>
         </ul>
       </div>
 
@@ -30,19 +41,19 @@ const { Content } = await render(profile);
         <div class="stats-grid">
           <div class="stat-item">
             <strong>13+</strong>
-            <span>年工程经验</span>
-          </div>
-          <div class="stat-item">
-            <strong>2W+</strong>
-            <span>机器运维规模</span>
+            <span>年工作经验</span>
           </div>
           <div class="stat-item">
             <strong>90%</strong>
-            <span>人工操作降幅</span>
+            <span>研发效能提升（核心流程自动化）</span>
           </div>
           <div class="stat-item">
-            <strong>99.99%</strong>
-            <span>SLO 目标保障</span>
+            <strong>0→1</strong>
+            <span>工具开发（效能/拨测/SLO/部署）</span>
+          </div>
+          <div class="stat-item">
+            <strong>AI×业务</strong>
+            <span>AI 提效（知识库/ChatBI/智能审核）</span>
           </div>
         </div>
       </div>
@@ -119,6 +130,18 @@ const { Content } = await render(profile);
 
   .meta-list span {
     color: var(--text-dim);
+  }
+
+  .meta-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .meta-label :global(.social-icon) {
+    width: 14px;
+    height: 14px;
+    color: var(--accent);
   }
 
   .meta-list strong {

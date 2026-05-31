@@ -6,6 +6,13 @@ import { getCollection } from "astro:content";
 const projects = (await getCollection("projects")).sort(
   (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime()
 );
+
+const projectThemes: Record<string, "warm" | "blue" | "slate" | "dark"> = {
+  flashlog: "warm",
+  smartreview: "blue",
+  "paperless-ngx-ai": "slate",
+  "portfolio-kit": "dark"
+};
 ---
 
 <BaseLayout title="作品集 | CallStorm" description="项目、技术栈和成果展示。">
@@ -14,7 +21,7 @@ const projects = (await getCollection("projects")).sort(
     <h1>作品集</h1>
   </section>
 
-  <section class="grid">
+  <section class="grid grid--projects">
     {projects.map((project) => (
       <Card
         title={project.data.title}
@@ -22,6 +29,7 @@ const projects = (await getCollection("projects")).sort(
         href={project.data.repo ?? `/projects/${project.id}`}
         tags={project.data.tech}
         cover={project.data.cover}
+        theme={projectThemes[project.id] ?? "blue"}
         icon="github"
         ctaLabel={project.data.repo ? "View on GitHub" : "View Project"}
         external={Boolean(project.data.repo)}

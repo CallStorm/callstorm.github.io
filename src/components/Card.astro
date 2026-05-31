@@ -11,47 +11,67 @@ interface Props {
   icon?: "ai" | "robot" | "book" | "video" | "github";
   ctaLabel?: string;
   external?: boolean;
+  theme?: "warm" | "blue" | "slate" | "dark";
 }
 
-const { title, description, href, meta, tags = [], cover, icon, ctaLabel, external = false } = Astro.props;
+const { title, description, href, meta, tags = [], cover, icon, ctaLabel, external = false, theme = "blue" } = Astro.props;
 const isProjectCard = tags.length > 0;
 const resolvedIcon = icon ?? (isProjectCard ? "github" : undefined);
 const actionLabel = ctaLabel ?? (isProjectCard ? "View on GitHub" : "View");
 ---
 
-<a class:list={["card", isProjectCard && "card--project"]} href={href} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined}>
-  {isProjectCard && cover && (
-    <div class="card-cover" aria-hidden="true">
-      <img src={cover} alt="" loading="lazy" />
-    </div>
-  )}
-  <div class="card-top">
-    {meta && !isProjectCard && (
-      <div class="card-top-left">
-        <p class="card-meta">{meta}</p>
+<a
+  class:list={["card", isProjectCard && "card--project", isProjectCard && `card--theme-${theme}`]}
+  href={href}
+  target={external ? "_blank" : undefined}
+  rel={external ? "noreferrer" : undefined}
+>
+  {isProjectCard ? (
+    <>
+      {cover && (
+        <div class="card-cover-wrap" aria-hidden="true">
+          <div class="card-cover">
+            <img src={cover} alt="" loading="lazy" />
+          </div>
+          {resolvedIcon && (
+            <div class="card-cover-badge">
+              <Icon name={resolvedIcon} />
+            </div>
+          )}
+        </div>
+      )}
+      <div class="card-body">
+        <h3>{title}</h3>
+        <p>{description}</p>
+        <div class="card-tags">
+          {tags.map((tag) => (
+            <span class="card-tag">{tag}</span>
+          ))}
+        </div>
+        <div class="card-cta">
+          <span>{actionLabel}</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 12h14m-5-5 5 5-5 5" />
+          </svg>
+        </div>
       </div>
-    )}
-    {resolvedIcon && (
-      <div class="card-icon" aria-hidden="true">
-        <Icon name={resolvedIcon} />
+    </>
+  ) : (
+    <>
+      <div class="card-top">
+        {meta && (
+          <div class="card-top-left">
+            <p class="card-meta">{meta}</p>
+          </div>
+        )}
+        {resolvedIcon && (
+          <div class="card-icon" aria-hidden="true">
+            <Icon name={resolvedIcon} />
+          </div>
+        )}
       </div>
-    )}
-  </div>
-  <h3>{title}</h3>
-  <p>{description}</p>
-  {isProjectCard && (
-    <div class="card-tags">
-      {tags.map((tag) => (
-        <span class="card-tag">{tag}</span>
-      ))}
-    </div>
-  )}
-  {isProjectCard && (
-    <div class="card-cta">
-      <span>{actionLabel}</span>
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M4 12h14m-5-5 5 5-5 5" />
-      </svg>
-    </div>
+      <h3>{title}</h3>
+      <p>{description}</p>
+    </>
   )}
 </a>
